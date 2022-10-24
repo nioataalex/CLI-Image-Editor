@@ -1,0 +1,76 @@
+#Copyright Nioata Alexandra 312CAa 2021-2022
+
+Homework 3 - CLI-IMAGE EDITOR
+
+What I've learned from this homework:
+- how to use strings, structs, ascii and binary files
+- how to edit an image, which was enjoyable
+- how to use header files
+- more about .ppm and .pgm files
+
+First of all, the problem starts with reading an action. After this,
+each action will be solved. Also, I used c files and headers with
+suggestive names.(load_image.c has 3 functions, aloc_matrix and free_matrix,
+which are used in other files, same for save_image.c with save_coordinates)
+Each function is explained in the program.
+
+I will explain each action now:
+
+1. LOAD:
+- check if the image was loaded or not
+- if the image wasn't loaded, it will load a ppm
+or pgm file
+- verifies what type of image needs to be loaded, if it's binary or ascii,
+if it's grayscale or colour
+- I used the function called load_image
+
+2. SELECT:
+- if stdin reads the word ALL, the coordinates are 0, 0, width
+and height
+- if stdin reads 4 strings, the program will check if they are
+numbers will swap values if it is needed
+- also checks if the numbers are less than 0,
+or are bigger than the given width/height
+- the function that I used is called select_image +
+helpful functions swap_values, check is_number
+
+3. ROTATE:
+- comes with the angle that the image or a part of the image
+will be rotated
+- the angle can be +/-90, +/-180, +/-270, +/-360
+- I used 6 functions: rotate_image, rotate_90_degrees
+rotate_full_image_gray, rotates_full_image_color, rotate_gray,
+rotate_color
+
+4. CROP:
+- crops the photo with the selection made earlier
+- the used function check the type of the file,
+allocates a new_matrix with the made selection,
+then frees the old one, and changes with the new one
+
+5. APPLY:
+- four filters: EDGE, SHARPEN, BLUR, GAUSSIAN_BLUR
+- the filters are used for colourful photos
+- if the image is grayscale a message will be displayed:
+"Easy, Charlie Chaplin!"
+- if the filter is not one of those 4, a message will be displayed:
+"APPlY parameter invalid"
+- uses the kernels image
+- functions used are apply_filter, apply_image, and
+clamp_function
+
+6. SAVE:
+- saves the image with the name from stdin
+- if ascii is read from stdin, the file is ascii,
+then it is binary
+- used function is called save_image
+
+7. EXIT:
+- frees the matrixes that are used
+- used function called exit_image
+
+If an image is not loaded, the operation will not take place
+and a message will be displayed
+After every successful operation, the output will display
+a suggestive message
+
